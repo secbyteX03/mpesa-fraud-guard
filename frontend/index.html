@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPESA Fraud Guard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <header class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-shield-alt text-2xl"></i>
+                <h1 class="text-2xl font-bold">MPESA Fraud Guard</h1>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Transaction Form -->
+            <div class="lg:col-span-2 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-6 text-gray-800">New Transaction</h2>
+                <form id="transactionForm" class="space-y-4">
+                    <div>
+                        <label for="senderPhone" class="block text-sm font-medium text-gray-700 mb-1">Your Phone Number</label>
+                        <input type="tel" id="senderPhone" class="form-input" placeholder="e.g., 254712345678" required>
+                    </div>
+                    
+                    <div>
+                        <label for="recipientPhone" class="block text-sm font-medium text-gray-700 mb-1">Recipient Phone</label>
+                        <input type="tel" id="recipientPhone" class="form-input" placeholder="e.g., 254712345679" required>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="amount" class="block text-sm font-medium text-gray-700 mb-1">Amount (KES)</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-2 text-gray-500">KES</span>
+                                <input type="number" id="amount" class="form-input pl-12" placeholder="0.00" min="1" step="0.01" required>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="transactionType" class="block text-sm font-medium text-gray-700 mb-1">Type</label>
+                            <select id="transactionType" class="form-select">
+                                <option value="send">Send Money</option>
+                                <option value="buy">Buy Goods</option>
+                                <option value="cash">Withdraw Cash</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Location</label>
+                        <select id="location" class="form-select">
+                            <option value="Nairobi">Nairobi</option>
+                            <option value="Mombasa">Mombasa</option>
+                            <option value="Kisumu">Kisumu</option>
+                        </select>
+                    </div>
+                    
+                    <div class="pt-2">
+                        <button type="submit" class="btn btn-primary">Check Transaction Risk</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Risk Assessment -->
+            <div id="riskCard" class="hidden">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+</html>
